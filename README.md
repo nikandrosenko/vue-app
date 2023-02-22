@@ -1,6 +1,4 @@
-# Vue-App
-
-1T Vue home project #1
+# 1T Vue App Home Project #1
 
 ## Project setup
 
