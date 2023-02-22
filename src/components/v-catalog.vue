@@ -6,7 +6,7 @@
         v-for="product in products"
         :key="product.article"
         :product_data="product"
-        @hi="showArticleFromChild"
+        @sendDataToParent="showArticleFromChild"
       />
     </div>
   </div>
@@ -85,8 +85,8 @@ export default {
     };
   },
   methods: {
-    showArticleFromChild(data) {
-      console.log(data);
+    showArticleFromChild(article) {
+      console.log(article);
     },
   },
 };

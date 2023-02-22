@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     sendDataToParent() {
-      this.$emit("hi", this.product_data.article);
+      this.$emit("sendDataToParent", this.product_data.article);
     },
   },
 };
