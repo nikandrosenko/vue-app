@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <template>
   <div class="v-catalog-item">
     <img
@@ -10,7 +9,9 @@
     <p class="v-catalog-item__about">{{ product_data.about }}</p>
     <div class="v-catalog-item__price-box">
       <p class="v-catalog-item__price">{{ product_data.price }}</p>
-      <button class="v-catalog-item__add_to_cart_btn" @click="sendDataToParent">add to cart</button>
+      <button class="v-catalog-item__add_to_cart_btn" @click="sendDataToParent">
+        add to cart
+      </button>
     </div>
   </div>
 </template>
