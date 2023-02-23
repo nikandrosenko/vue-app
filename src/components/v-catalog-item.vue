@@ -41,7 +41,7 @@ export default {
 <style lang="scss">
 .v-catalog-item {
   display: flex;
-  flex-basis: 20%;
+  flex-basis: 25%;
   flex-direction: column;
   justify-content: start;
   max-width: 300px;

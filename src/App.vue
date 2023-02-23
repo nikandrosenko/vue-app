@@ -15,6 +15,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~materialize-css/dist/css/materialize.min.css";
+
 #app {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
