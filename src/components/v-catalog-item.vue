@@ -9,7 +9,7 @@
     <p class="v-catalog-item__about">{{ product_data.about }}</p>
     <div class="v-catalog-item__price-box">
       <p class="v-catalog-item__price">{{ product_data.price }}</p>
-      <button class="v-catalog-item__add_to_cart_btn" @click="sendDataToParent">
+      <button class="v-catalog-item__add_to_cart_btn" @click="addToCart">
         add to cart
       </button>
     </div>
@@ -31,8 +31,8 @@ export default {
     return {};
   },
   methods: {
-    sendDataToParent() {
-      this.$emit("sendDataToParent", this.product_data.article);
+    addToCart() {
+      this.$emit("addToCart", this.product_data);
     },
   },
 };
@@ -41,14 +41,14 @@ export default {
 <style lang="scss">
 .v-catalog-item {
   display: flex;
+  flex-basis: 20%;
   flex-direction: column;
   justify-content: start;
-  flex-basis: 20%;
   max-width: 300px;
   min-height: 220px;
-  box-shadow: 0 0 8px 0 grey;
   padding: 20px;
   margin: 20px;
+  box-shadow: 0 0 8px 0 grey;
   background-color: #333333;
   border-radius: 5px;
   transition: 0.2s;
@@ -82,12 +82,14 @@ export default {
     }
   }
   &__add_to_cart_btn {
-    color: #ffffff;
-    padding: 10px 10px;
+    color: #eeeeee;
+    padding: 10px;
     border: 1px solid #eeeeee;
     border-radius: 5px;
     transition: 0.1s;
     text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 900;
     &:hover {
       background-color: #707070;
     }
