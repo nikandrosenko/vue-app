@@ -3,7 +3,10 @@
     <h1 class="v-catalog__title">Catalog</h1>
     <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
       <div class="v-catalog__link_to_cart">
-        <i class="medium material-icons">shopping_cart</i> {{ CART.length }}
+        <i class="medium material-icons">shopping_cart</i>
+        <span v-if="CART.length > 0" class="v-catalog__cart-quantity">
+          {{ CART.length }}</span
+        >
       </div>
     </router-link>
     <div class="v-catalog__list">
@@ -47,13 +50,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .v-catalog {
-  margin-top: 15px;
   margin-bottom: 15px;
   &__title {
     margin-bottom: 15px;
     text-transform: uppercase;
+    font-weight: 900;
   }
   &__list {
     display: flex;
@@ -64,9 +67,35 @@ export default {
   }
   &__link_to_cart {
     position: absolute;
-    top: 10px;
-    right: 15px;
-    padding: 15px;
+    top: 5%;
+    right: 5%;
+    color: #eeeeee;
+    & .material-icons {
+      position: relative;
+      padding: 15px;
+      background-color: #333333;
+      border: 1px solid #eeeeee;
+      border-radius: 50%;
+      font-size: 50px;
+      &:hover,
+      &:focus {
+        background-color: #707070;
+      }
+      &:active {
+        background-color: #eeeeee;
+      }
+    }
+  }
+  &__cart-quantity {
+    position: absolute;
+    min-width: 25px;
+    bottom: 0;
+    right: 0;
+    padding: 1px 5px;
+    background-color: #333333;
+    border: 1px solid #eeeeee;
+    border-radius: 50%;
+    font-size: 15px;
   }
 }
 </style>

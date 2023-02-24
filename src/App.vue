@@ -28,7 +28,6 @@ export default {
   margin: 0;
 }
 body {
-  position: relative;
   background-color: #222222;
   box-sizing: border-box;
 }
