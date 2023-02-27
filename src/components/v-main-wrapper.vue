@@ -10,11 +10,9 @@
 
 <script>
 import { mapGetters } from "vuex";
-import vCatalog from "./v-catalog.vue";
 
 export default {
   name: "v-main-wrapper",
-  components: { vCatalog },
   props: {},
   data() {
     return {};
