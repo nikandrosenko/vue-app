@@ -1,6 +1,6 @@
 <template>
   <div class="v-cart">
-    <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
+    <router-link :to="{ name: 'cart' }">
       <div class="v-cart__link_to_cart">
         <i class="medium material-icons">shopping_cart</i>
         <span v-if="CART.length > 0" class="v-cart__cart-quantity">

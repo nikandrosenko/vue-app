@@ -1,16 +1,20 @@
 <template>
   <div class="v-main-wrapper">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import vCatalog from "./v-catalog.vue";
 
 export default {
   name: "v-main-wrapper",
+  components: { vCatalog },
   props: {},
   data() {
     return {};
