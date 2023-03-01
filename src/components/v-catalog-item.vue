@@ -52,8 +52,6 @@ export default {
   background-color: #333333;
   border-radius: 5px;
   transition: 0.2s;
-  text-overflow: clip;
-  overflow-x: hidden;
   &:hover {
     background-color: #363636;
   }
@@ -73,7 +71,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0;
+    margin-top: auto;
   }
   &__price {
     font-weight: 900;

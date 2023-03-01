@@ -22,9 +22,7 @@ export default {
   },
   methods: {},
   watch: {},
-  mounted() {
-    console.log("v-main-wrapper mounted successfully");
-  },
+  mounted() {},
 };
 </script>
 

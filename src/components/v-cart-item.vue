@@ -14,15 +14,25 @@
         <p>{{ cart_item_data.about }}</p>
       </div>
     </div>
-    <div class="v-cart-item__quantity">
-      <p>
-        <span class="v-cart-item__price"> {{ cart_item_data.price }} </span> *
-        <span>{{ cart_item_data.quantity }}</span>
-      </p>
-      <button class="v-cart-item__delete-btn" @click="deleteFromCart">
-        Delete
-      </button>
+    <div class="v-cart-item__result">
+      <div class="v-cart-item__quantity-box">
+        <button @click="decProduct" class="v-cart-item__quantity-btn">
+          <i class="material-icons">remove</i>
+        </button>
+        <span class="v-cart-item__quantity">
+          {{ cart_item_data.quantity }}
+        </span>
+        <button @click="incProduct" class="v-cart-item__quantity-btn">
+          <i class="material-icons">add</i>
+        </button>
+      </div>
+      <div class="v-cart-item__price">
+        {{ cart_item_data.price * cart_item_data.quantity }}
+      </div>
     </div>
+    <button @click="deleteFromCart" class="v-cart-item__delete-btn">
+      <i class="material-icons">delete</i>
+    </button>
   </div>
 </template>
 
@@ -47,11 +57,15 @@ export default {
     deleteFromCart() {
       this.$emit("deleteFromCart");
     },
+    incProduct() {
+      this.$emit("incProduct", this.cart_item_data);
+    },
+    decProduct() {
+      this.$emit("decProduct", this.cart_item_data);
+    },
   },
   watch: {},
-  mounted() {
-    console.log("Hello! Im alive!");
-  },
+  mounted() {},
 };
 </script>
 
@@ -76,6 +90,36 @@ export default {
     text-align: left;
     & p {
       margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__result {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  &__quantity-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  &__quantity {
+    margin: 0 10px;
+  }
+  &__quantity-btn {
+    color: #eeeeee;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    transition: 0.1s;
+    &:hover,
+    &:focus {
+      background-color: #707070;
+    }
+    &:active {
+      background-color: #eeeeee;
     }
   }
   &__name {
@@ -99,20 +143,15 @@ export default {
       content: " \20BD";
     }
   }
-  &__quantity {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
   &__delete-btn {
     color: #eeeeee;
     padding: 10px;
     border: 1px solid #eeeeee;
     border-radius: 5px;
     transition: 0.1s;
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 900;
+    & .material-icons {
+      font-size: 45px;
+    }
     &:hover,
     &:focus {
       background-color: #707070;

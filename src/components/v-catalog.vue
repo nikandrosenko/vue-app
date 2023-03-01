@@ -5,7 +5,7 @@
       <div class="v-catalog__link_to_cart">
         <i class="medium material-icons">shopping_cart</i>
         <span v-if="CART.length > 0" class="v-catalog__cart-quantity">
-          {{ CART.length }}</span
+          {{ CART_QUANTITY }}</span
         >
       </div>
     </router-link>
@@ -32,7 +32,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"]),
+    ...mapGetters(["PRODUCTS", "CART", "CART_QUANTITY"]),
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
@@ -41,11 +41,15 @@ export default {
     },
   },
   mounted() {
-    this.GET_PRODUCTS_FROM_API().then((response) => {
-      if (response.data) {
-        console.log("Данные пришли");
-      }
-    });
+    this.GET_PRODUCTS_FROM_API()
+      .then((response) => {
+        if (response.data) {
+          console.log("Get products from API success");
+        }
+      })
+      .catch((error) => {
+        console.log("Get products from API error: ", error);
+      });
   },
 };
 </script>
@@ -63,7 +67,7 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 50px;
-    align-items: center;
+    align-items: stretch;
   }
   &__link_to_cart {
     position: absolute;

@@ -5,6 +5,7 @@ export default createStore({
   state: {
     products: [],
     cart: [],
+    totalCost: 0,
   },
   getters: {
     PRODUCTS(state) {
@@ -13,16 +14,47 @@ export default createStore({
     CART(state) {
       return state.cart;
     },
+    CART_QUANTITY(state) {
+      return state.cart.reduce((sumQuantity, product) => {
+        return sumQuantity + product.quantity;
+      }, 0);
+    },
+    TOTAL_COST(state) {
+      return state.totalCost;
+    },
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
     },
     SET_CART: (state, product) => {
-      state.cart.push(product);
+      if (product.quantity === 0) {
+        state.cart.push(product);
+        product.quantity++;
+        state.totalCost += product.price;
+      } else {
+        product.quantity++;
+        state.totalCost += product.price;
+      }
     },
     REMOVE_FROM_CART: (state, index) => {
+      state.totalCost -= state.cart[index].price * state.cart[index].quantity;
+      state.cart[index].quantity = 0;
       state.cart.splice(index, 1);
+    },
+    INCREASE_PRODUCT_IN_CART: (state, index) => {
+      state.cart[index].quantity++;
+      state.totalCost += state.cart[index].price;
+    },
+    DECREASE_PRODUCT_IN_CART: (state, index) => {
+      if (state.cart[index].quantity == 1) {
+        state.cart[index].quantity = 0;
+        state.totalCost -= state.cart[index].price;
+        state.cart.splice(index, 1);
+      } else {
+        state.cart[index].quantity--;
+        state.totalCost -= state.cart[index].price;
+      }
     },
   },
   actions: {
@@ -44,6 +76,12 @@ export default createStore({
     },
     DELETE_FROM_CART({ commit }, index) {
       commit("REMOVE_FROM_CART", index);
+    },
+    INCREASE_PRODUCT({ commit }, index) {
+      commit("INCREASE_PRODUCT_IN_CART", index);
+    },
+    DECREASE_PRODUCT({ commit }, index) {
+      commit("DECREASE_PRODUCT_IN_CART", index);
     },
   },
   modules: {},
