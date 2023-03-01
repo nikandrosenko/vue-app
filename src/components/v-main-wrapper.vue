@@ -13,16 +13,12 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "v-main-wrapper",
-  props: {},
   data() {
     return {};
   },
   computed: {
     ...mapGetters(["CART"]),
   },
-  methods: {},
-  watch: {},
-  mounted() {},
 };
 </script>
 
