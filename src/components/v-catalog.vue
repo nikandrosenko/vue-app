@@ -27,7 +27,6 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "v-catalog",
   components: { vCatalogItem },
-  props: {},
   data() {
     return {};
   },
