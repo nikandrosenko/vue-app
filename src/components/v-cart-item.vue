@@ -52,7 +52,6 @@ export default {
       title: "good evening",
     };
   },
-  computed: {},
   methods: {
     deleteFromCart() {
       this.$emit("deleteFromCart");
@@ -64,8 +63,6 @@ export default {
       this.$emit("decProduct", this.cart_item_data);
     },
   },
-  watch: {},
-  mounted() {},
 };
 </script>
 
