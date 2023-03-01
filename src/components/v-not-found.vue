@@ -4,6 +4,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "v-not-found",
+  data() {
+    return {};
+  },
+};
+</script>
+
 <style scoped lang="scss">
 .v-not-found {
   text-transform: uppercase;
