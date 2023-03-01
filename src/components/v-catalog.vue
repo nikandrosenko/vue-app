@@ -41,15 +41,7 @@ export default {
     },
   },
   mounted() {
-    this.GET_PRODUCTS_FROM_API()
-      .then((response) => {
-        if (response.data) {
-          console.log("Get products from API success");
-        }
-      })
-      .catch((error) => {
-        console.log("Get products from API error: ", error);
-      });
+    this.GET_PRODUCTS_FROM_API();
   },
 };
 </script>

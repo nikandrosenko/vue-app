@@ -63,11 +63,12 @@ export default createStore({
         method: "GET",
       })
         .then((products) => {
+          console.log("Get product from API success");
           commit("SET_PRODUCTS_TO_STATE", products.data);
           return products;
         })
         .catch((error) => {
-          console.log(error);
+          console.log("Get product from API error: ", error);
           return error;
         });
     },
