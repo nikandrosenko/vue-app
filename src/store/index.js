@@ -69,6 +69,7 @@ export default createStore({
         })
         .catch((error) => {
           console.log("Get product from API error: ", error);
+          alert(error.message);
           return error;
         });
     },
